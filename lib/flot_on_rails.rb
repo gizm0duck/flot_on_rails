@@ -61,6 +61,26 @@ module FlotOnRails
       return x,y
     end
     
+    class << self
+      def install_required_javascript_files
+        files = ['excanvas.js', 'jquery-1.3.2.js', 'jquery.flot.js']
+        begin
+          raise 'asdf'
+          files.each do |file|
+            destination = "#{RAILS_ROOT}/public/javascripts/#{file}"
+            FileUtils.cp "#{RAILS_ROOT}/vendor/plugins/flot_on_rails/assets/#{file}", destination unless File.exists?(destination)
+          end
+          puts "All Javascript files copied successfully"
+        rescue
+          destination = "#{RAILS_ROOT}/public/javascripts/#{file}"
+          puts "There was a problem copying files, please run (following commands) manually."
+          files.each do |file|
+            puts "cp #{RAILS_ROOT}/vendor/plugins/flot_on_rails/assets/#{file} #{destination}" unless File.exists?(destination)
+          end
+        end
+      end
+    end
+    
     private
     
       def date?(date)

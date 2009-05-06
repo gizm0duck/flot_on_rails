@@ -1,1 +1,2 @@
-# Include hook code here
+require 'flot_on_rails'
+require 'flot_on_rails_helper'
