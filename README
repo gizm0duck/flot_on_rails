@@ -24,7 +24,66 @@ Example
 
 The chart will likely be accessed through the 'flot_chart' view helper method.
 
+The flot_chart method takes 3 parameters.
+# element - This is the id of the html element on the page that we are going 
+  to draw the chart in.
+# data_sets - This is all the data that we are going to chart.  The key of the
+  hash will be the data_set's label on the chart
+  eg.
+    {'running' => {:data => Cats.all,
+      :xaxis => 'age',
+      :yaxis => 'number_of_lives'}}
+  The values for xaxis and yaxis refer to the object attributes (or methods)
+  that will be used to generate the data for the dataset on a given axis
+# options - These are optional chart-wide settings, such as background color
+  eg. 
+    {"xaxis": {"mode": "time"}} *note, this one will be set automatically if
+    the data type of the xaxis is a date.  Same goes for the data type of the
+    y axis
 
-You can find some more information by looking at the spec files.
+This Ruby code:
+
+  <%= flot_chart('placeholder', {
+    "Running" => {:data => TrainingSession.running, 
+      :xaxis => 'training_date', 
+      :yaxis => 'distance' }) %>
+
+Will generate the following html:
+
+  <script type="text/javascript">
+  $(function () {
+  $.plot($('#placeholder'), [{"label": "Cycling", "data": [[1240185600000, 10.0], [1240358400000, 12.0], [1236556800000, 8.0]]}], {"xaxis": {"mode": "time"}});
+  });
+  </script>
+
+
+** A slightly more complex example **
+
+This Ruby code:
+
+  <%= flot_chart('placeholder', {
+    "Running" => {:data => TrainingSession.running, 
+      :xaxis => 'training_date', 
+      :yaxis => 'distance', 
+      :set_options => {
+        :points => {:show => true},
+        :lines  => {:show => true}} },
+    "Cycling" => {:data => TrainingSession.cycling, 
+      :xaxis => 'training_date', 
+      :yaxis => 'distance', 
+      :set_options => {
+        :points => {:show => true},
+        :lines  => {:show => false}}}}) %>
+
+Will generate the following html:
+
+  <script type="text/javascript">
+  $(function () {
+  $.plot($('#placeholder'), [{"points": {"show": true}, "lines": {"show": false}, "label": "Cycling", "data": [[1240185600000, 10.0], [1240358400000, 12.0], [1236556800000, 8.0]]}, {"points": {"show": true}, "lines": {"show": true}, "label": "Running", "data": [[1231027200000, 7.0], [1231545600000, 8.0], [1233014400000, 3.0], [1233964800000, 2.0], [1234828800000, 1.0], [1235174400000, 3.75], [1238025600000, 3.0], [1238976000000, 2.0], [1239148800000, 3.0], [1240099200000, 3.75], [1240272000000, 3.0], [1240876800000, 3.0], [1240358400000, 5.0]]}], {"xaxis": {"mode": "time"}});
+  });
+  </script>
+  
+
+You can find some more information by looking at the spec files, the flot documentation, or just playing around.
 
 Copyright (c) 2009 Shane Wolf, released under the MIT license
