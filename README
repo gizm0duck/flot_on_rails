@@ -1,13 +1,30 @@
 FlotOnRails
 ===========
 
-Introduction goes here.
+Flot is a powerful charting library for jQuery, and flot_on_rails aims to 
+package it up into a nice, easy to use Ruby interface.  Flotilla is another
+library that aims to do the same thing, but I found it a little confusing
+and there was no test coverage.  After hacking around on it for a bit, trying
+to make it fit my needs I decided to roll my own instead.
 
+Installation
+=======
+
+You will need jquery, flot, and excanvas javascript files in order for Flot
+to function.  If you install by using script/plugin install, then these files
+should already be copied into your public/javascripts directory.  If you
+install it any other way, you can run the following rake task:
+
+rake flot_on_rails:initialize
+
+Which will copy the files to your javascript directory
 
 Example
 =======
 
-Example goes here.
+The chart will likely be accessed through the 'flot_chart' view helper method.
 
+
+You can find some more information by looking at the spec files.
 
 Copyright (c) 2009 Shane Wolf, released under the MIT license
