@@ -88,6 +88,10 @@ $.plot($('#placeholder'), [{"points": {"show": true}, "lines": {"show": false}, 
 </script>
 </code></pre>
 
+Here is what you end up with
+
+!http://i44.tinypic.com/a4abys.png(flot chart)!
+
 **Notice that in this case we also supplied each data_set with options unique to itself.  So here the Cycling points are just dots, with no lines connecting them, while the Running points are just lines, with no dots on the data point.**
 
 You can find some more information by looking at the spec files, the flot documentation, or just playing around.
