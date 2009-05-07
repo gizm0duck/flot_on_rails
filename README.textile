@@ -41,7 +41,9 @@ The chart will likely be accessed through the 'flot_chart' view helper method.
 *** example:
 **** {"xaxis": {"mode": "time"}} *note, this one will be set automatically by the library for whichever axis is a date object
 
-*Make sure you have the element that you are trying to place the chart into defined in your page, and that it has an appropriate height and width value set on it*
+<pre><code>
+  !! Make sure you have the element that you are trying to place the chart into defined in your page, and that it has an appropriate height and width value set on it !!
+</code></pre>
 
 h2. Example
 
