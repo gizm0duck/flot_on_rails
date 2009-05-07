@@ -36,7 +36,6 @@ The chart will likely be accessed through the 'flot_chart' view helper method.
 **** {'running' => {:data => Cats.all,
   :xaxis => 'age',
   :yaxis => 'number_of_lives'}}
-
 ## chart_options (optional hash)
 *** These are optional chart-wide settings, such as background color, or axis mode
 *** example:
