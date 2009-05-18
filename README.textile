@@ -48,7 +48,7 @@ This Ruby code:
 <%= flot_chart('placeholder', {
   "Running" => {:data => TrainingSession.running, 
     :xaxis => 'training_date', 
-    :yaxis => 'distance' }) %>@
+    :yaxis => 'distance' }) %>
 </code></pre>
 
 Will generate the following HTML:
