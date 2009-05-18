@@ -31,7 +31,7 @@ The chart will likely be accessed through the 'flot_chart' view helper method.
 *** The hash key will be used as the data_sets label on the chart legend
 *** data is the data_set to be plotted, in this case an array of ActiveRecord objects.
 *** xaxis is the attribute or method of the data_set to be plotted along the charts x axis
-*** Same thing applies for yaxis 
+*** Sam thing applies for yaxis 
 *** example:
 **** {'running' => {:data => Cats.all,
   :xaxis => 'age',
@@ -40,11 +40,6 @@ The chart will likely be accessed through the 'flot_chart' view helper method.
 *** These are optional chart-wide settings, such as background color, or axis mode
 *** example:
 **** {"xaxis": {"mode": "time"}} *note, this one will be set automatically by the library for whichever axis is a date object
-
-<pre><code>
-  !! Make sure the element you are trying to place the chart into is defined in your page !!
-  !! And that it has an appropriate height and width value set on it !!
-</code></pre>
 
 h2. Example
 

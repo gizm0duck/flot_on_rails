@@ -17,8 +17,8 @@ module FlotOnRails
         :chart_options => @chart_options
       }
       
-      @chart_options.merge!({ :xaxis => { :mode => 'time' }}) if @x_is_date
-      @chart_options.merge!({ :yaxis => { :mode => 'time' }}) if @y_is_date
+      @chart_options.reverse_merge!({ :xaxis => { :mode => 'time' }}) if @x_is_date
+      @chart_options.reverse_merge!({ :yaxis => { :mode => 'time' }}) if @y_is_date
       
       return chart_data
     end
@@ -38,8 +38,10 @@ module FlotOnRails
     end
     
     def build_data_points(data, xaxis, yaxis)
+      return data unless xaxis and yaxis
+      
       chart_data = []
-      data.each do |obj|
+      Array(data).each do |obj|
         x = obj.send(xaxis)
         y = obj.send(yaxis)
         x,y = convert_axis_values(x,y)
@@ -49,12 +51,12 @@ module FlotOnRails
     end
     
     def convert_axis_values(x,y)
-      if date?(x)
+      if Base.date?(x)
         x = x.to_i*1000
         @x_is_date = true
       end
       
-      if date?(y)
+      if Base.date?(y)
         y = y.to_i*1000
         @y_is_date = true
       end
@@ -79,12 +81,10 @@ module FlotOnRails
           end
         end
       end
-    end
-    
-    private
-    
+      
       def date?(date)
         date.is_a?(Time) or date.is_a?(Date) or date.is_a?(DateTime) or date.is_a?(ActiveSupport::TimeWithZone)
       end
+    end
   end
 end
