@@ -33,7 +33,7 @@ The chart will likely be accessed through the 'flot_chart' view helper method.
 *** xaxis is the attribute or method of the data_set to be plotted along the charts x axis
 *** Sam thing applies for yaxis 
 *** example:
-**** {'running' => {:data => Cats.all,
+**** {'Cats' => {:data => Cats.all,
   :xaxis => 'age',
   :yaxis => 'number_of_lives'}}
 ## chart_options (optional hash)
