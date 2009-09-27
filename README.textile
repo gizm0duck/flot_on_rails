@@ -93,6 +93,10 @@ Here is what you end up with
 
 **Notice that in this case we also supplied each data_set with options unique to itself.  So here the Cycling points are just dots, with no lines connecting them, while the Running points are just lines, with no dots on the data point.**
 
+Here is a chart I have generated using flot_on_rails for a training log application I have written. It will help give an indication of more complicated charts that can be built with this tool.
+
+!http://i38.tinypic.com/2u6mp0h.png(complete flot chart)!
+
 You can find some more information by looking at the spec files, the flot documentation, or just playing around.
 
 
